@@ -493,6 +493,8 @@ public class DocumentService implements DocumentServiceIntf {
 							ErrorMessages.DOCUMENT_FAILED_TO_FETCH.getMessage());
 				}
 				byte[] cephBytes = IOUtils.toByteArray(sourcefile);
+				System.out.println("Hash database "+documentEntity.getDocHash());
+				System.out.println("Hash file "+HashUtill.hashUtill(cephBytes));
 				if (documentEntity.getDocHash().equals(HashUtill.hashUtill(cephBytes))) {
 					docDto.setDocument(cryptoUtil.decrypt(cephBytes, documentEntity.getEncryptedDateTime()));
 					responseDto.setResponse(docDto);
